@@ -1,5 +1,4 @@
 import React from "react";
-import { Header, Wrapper, PlainText } from "../../components/Common";
 import {Summary} from "../../components/Summary";
 import PropTypes from "prop-types";
 

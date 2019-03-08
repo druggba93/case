@@ -1,6 +1,6 @@
 import React from "react";
-import { Header, SmallHeader, Wrapper, PlainText } from "../../components/Common";
-import {Summary} from "../../components/Summary"
+import {Wrapper, TableHead} from "../../components/Common";
+import {Summary} from "../../components/Summary";
 import PropTypes from "prop-types";
 import { calcAvgScore, calcStDev } from "../../utils/utils.js";
 
@@ -35,7 +35,27 @@ export class TeamData extends React.Component {
     }
 
     return (
+      <Wrapper>
         <Summary vars={vars}></Summary>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birth date</th>
+            <th>Test score</th>
+            <th>Sten score</th>
+            <th>Percentile</th>
+          </tr>
+          <tr>
+            <td>Oskar Drugge</td>
+            <td>drugge.oskar@gmail.com</td>
+            <td>1993-07-18</td>
+            <td>{42/45}</td>
+            <td>10</td>
+            <td>99</td>
+          </tr>
+        </table>
+      </Wrapper>
     );
   }
 }

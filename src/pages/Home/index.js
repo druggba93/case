@@ -20,8 +20,7 @@ class Home extends React.Component {
         );
     };
 
-    extractTestScores = orgData => {
-        const teams = orgData.teams.edges;
+    extractTestScores = teams => {
         return teams
         .map(team => team.node.employments.edges)
         .reduce((prev, cur) => { return prev.concat(cur) }, [])
@@ -40,7 +39,7 @@ class Home extends React.Component {
                             return <PlainText>Loading</PlainText>;
                         }
 
-                        const orgTestScores = this.extractTestScores(data.organization);
+                        const orgTestScores = this.extractTestScores(data.organization.teams.edges);
                         const orgAvgScore = calcAvgScore(orgTestScores);
                         const orgStDev = calcStDev(orgTestScores);
 
