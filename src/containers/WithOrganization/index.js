@@ -7,7 +7,39 @@ export const GET_ORGANIZATIONS = gql`
 query getOrganization($id: ID!) {
   organization(id: $id) {
     id
-    name    
+    name
+    created
+    teams {
+      edges {
+        node {
+          id
+          name
+          created
+          employments {
+            edges {
+              node {
+                employment {
+                  user {
+                    id
+                    email
+                    firstName
+                    lastName
+                    born
+                    logicTest {
+                      edges {
+                        node {
+                          score
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 `;
