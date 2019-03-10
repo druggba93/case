@@ -11,17 +11,17 @@ export class OrgData extends React.Component {
   };
 
   render() {
-    const orgData = this.props.orgData;
-    const vars = {
-      name: orgData.name,
-      id: orgData.id,
-      created: orgData.created,
-      numTests: this.props.orgNumTests,
-      avgScore: this.props.orgAvgScore,
-      stDev: this.props.orgStDev
-    };
-
-    return <Summary vars={vars} />;
+    const { orgData, orgNumTests, orgAvgScore, orgStDev } = this.props;
+    return (
+      <Summary
+        name={orgData.name}
+        id={orgData.id}
+        created={orgData.created}
+        numTests={orgNumTests}
+        avgScore={orgAvgScore}
+        stDev={orgStDev}
+      />
+    );
   }
 }
 

@@ -11,15 +11,15 @@ export class EmployeeData extends React.Component {
   };
 
   render() {
-    const employeeData = this.props.employeeData;
+    const { employeeData, orgAvgScore, orgStDev } = this.props;
     const testScore =
       employeeData.logicTest.edges.length > 0
         ? employeeData.logicTest.edges[0].node.score
         : null;
     const stenScore = calcStenScore(
       testScore,
-      this.props.orgAvgScore,
-      this.props.orgStDev
+      orgAvgScore,
+      orgStDev
     );
     return (
       <tr>

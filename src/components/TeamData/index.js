@@ -21,22 +21,22 @@ export class TeamData extends React.Component {
   };
 
   render() {
-    const teamData = this.props.teamData.node;
-    const teamTestScores = this.extractTestScores(teamData.employments.edges);
+    const { teamData, orgAvgScore, orgStDev } = this.props;
+    const teamTestScores = this.extractTestScores(
+      teamData.node.employments.edges
+    );
     const teamAvgScore = calcAvgScore(teamTestScores);
     const teamStDev = calcStDev(teamTestScores);
-    const vars = {
-      name: teamData.name,
-      id: teamData.id,
-      created: teamData.created,
-      numTests: teamTestScores.length,
-      avgScore: teamAvgScore,
-      stDev: teamStDev
-    };
-
     return (
       <Wrapper>
-        <Summary vars={vars} />
+        <Summary
+          name={teamData.node.name}
+          id={teamData.node.id}
+          created={teamData.node.created}
+          numTests={teamTestScores.length}
+          avgScore={teamAvgScore}
+          stDev={teamStDev}
+        />
         {teamTestScores.length > 0 && (
           <Table>
             <thead>
@@ -49,14 +49,14 @@ export class TeamData extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {teamData.employments.edges.map(employee => {
+              {teamData.node.employments.edges.map(employee => {
                 const employeeData = employee.node.employment.user;
                 return (
                   <EmployeeData
                     key={employeeData.id}
                     employeeData={employeeData}
-                    orgAvgScore={this.props.orgAvgScore}
-                    orgStDev={this.props.orgStDev}
+                    orgAvgScore={orgAvgScore}
+                    orgStDev={orgStDev}
                   />
                 );
               })}

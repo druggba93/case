@@ -4,22 +4,27 @@ import PropTypes from "prop-types";
 
 export class Summary extends React.Component {
   static propTypes = {
-    vars: PropTypes.object.isRequired
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    created: PropTypes.string.isRequired,
+    numTests: PropTypes.number.isRequired,
+    avgScore: PropTypes.number.isRequired,
+    stDev: PropTypes.number.isRequired
   };
 
   render() {
-    const vars = this.props.vars;
+    const { name, id, created, numTests, avgScore, stDev } = this.props;
     return (
       <Wrapper>
-        <Header>{vars.name}</Header>
-        <PlainText>ID: {vars.id}</PlainText>
-        <PlainText>Created at: {vars.created.split("T")[0]}</PlainText>
-        <PlainText>Number of persons taken the test: {vars.numTests}</PlainText>
+        <Header>{name}</Header>
+        <PlainText>ID: {id}</PlainText>
+        <PlainText>Created at: {created.split("T")[0]}</PlainText>
+        <PlainText>Number of persons who have taken the test: {numTests}</PlainText>
         <PlainText>
-          Average test score: {(vars.avgScore * 100).toFixed(1)} %
+          Average test score: {(avgScore * 100).toFixed(1)} %
         </PlainText>
         <PlainText>
-          Standard deviation of test scores: {(vars.stDev * 100).toFixed(1)} %
+          Standard deviation of test scores: {(stDev * 100).toFixed(1)} %
         </PlainText>
       </Wrapper>
     );
