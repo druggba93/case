@@ -1,7 +1,6 @@
 import React from "react";
-import {Summary} from "../../components/Summary";
+import { Summary } from "../../components/Summary";
 import PropTypes from "prop-types";
-
 
 export class OrgData extends React.Component {
   static propTypes = {
@@ -12,20 +11,17 @@ export class OrgData extends React.Component {
   };
 
   render() {
-
     const orgData = this.props.orgData;
     const vars = {
-        "name": orgData.name,
-        "id": orgData.id,
-        "created": orgData.created,
-        "numTests": this.props.orgNumTests,
-        "avgScore": this.props.orgAvgScore,
-        "stDev": this.props.orgStDev
-    }
+      name: orgData.name,
+      id: orgData.id,
+      created: orgData.created,
+      numTests: this.props.orgNumTests,
+      avgScore: this.props.orgAvgScore,
+      stDev: this.props.orgStDev
+    };
 
-    return (
-        <Summary vars={vars}></Summary>
-    );
+    return <Summary vars={vars} />;
   }
 }
 

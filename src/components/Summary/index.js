@@ -2,9 +2,7 @@ import React from "react";
 import { Header, Wrapper, PlainText } from "../../components/Common";
 import PropTypes from "prop-types";
 
-
 export class Summary extends React.Component {
-
   static propTypes = {
     vars: PropTypes.object.isRequired
   };
@@ -17,8 +15,12 @@ export class Summary extends React.Component {
         <PlainText>ID: {vars.id}</PlainText>
         <PlainText>Created at: {vars.created.split("T")[0]}</PlainText>
         <PlainText>Number of persons taken the test: {vars.numTests}</PlainText>
-        <PlainText>Average test score: {(vars.avgScore * 100).toFixed(1)} %</PlainText>
-        <PlainText>Standard deviation of test scores: {(vars.stDev * 100).toFixed(1)} %</PlainText>
+        <PlainText>
+          Average test score: {(vars.avgScore * 100).toFixed(1)} %
+        </PlainText>
+        <PlainText>
+          Standard deviation of test scores: {(vars.stDev * 100).toFixed(1)} %
+        </PlainText>
       </Wrapper>
     );
   }

@@ -1,5 +1,4 @@
-import styled, {css} from 'styled-components';
-
+import styled, { css } from "styled-components";
 
 const headerStyle = css`
   font-family: "Roboto Mono", monospace;
@@ -27,12 +26,12 @@ export const LargeHeader = styled.h1`
   font-size: 24px;
 `;
 
-export const Wrapper = styled.div`
-   margin-top: 20px;
+export const MainWrapper = styled.div`
+  padding: 24px;
 `;
 
-export const MainWrapper = styled.div`
-   padding: 24px;
+export const Wrapper = styled.div`
+  margin-top: 20px;
 `;
 
 export const PlainText = styled.p`
@@ -46,11 +45,11 @@ export const Table = styled.table`
   border-collapse: collapse;
 `;
 
-export const TableCell = styled.td`
-  ${tableCellStyle}
-`;
-
 export const HeaderCell = styled.th`
   ${tableCellStyle}
   font-weight: bold;
+`;
+
+export const TableCell = styled.td`
+  ${tableCellStyle}
 `;
