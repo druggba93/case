@@ -1,6 +1,7 @@
 import React from "react";
-import {Wrapper, TableHead} from "../../components/Common";
+import {Wrapper, Table, HeaderCell} from "../../components/Common";
 import {Summary} from "../../components/Summary";
+import {EmployeeData} from "../../components/EmployeeData";
 import PropTypes from "prop-types";
 import { calcAvgScore, calcStDev } from "../../utils/utils.js";
 
@@ -37,24 +38,25 @@ export class TeamData extends React.Component {
     return (
       <Wrapper>
         <Summary vars={vars}></Summary>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Birth date</th>
-            <th>Test score</th>
-            <th>Sten score</th>
-            <th>Percentile</th>
-          </tr>
-          <tr>
-            <td>Oskar Drugge</td>
-            <td>drugge.oskar@gmail.com</td>
-            <td>1993-07-18</td>
-            <td>{42/45}</td>
-            <td>10</td>
-            <td>99</td>
-          </tr>
-        </table>
+        { teamTestScores.length > 0 &&
+          <Table>
+          <thead>
+            <tr>
+              <HeaderCell>Name</HeaderCell>
+              <HeaderCell>Email</HeaderCell>
+              <HeaderCell>Birth date</HeaderCell>
+              <HeaderCell>Test score</HeaderCell>
+              <HeaderCell>Sten score</HeaderCell>
+            </tr>
+            </thead>
+            <tbody>
+            {teamData.employments.edges.map(employee => {
+              const employeeData = employee.node.employment.user;
+              return (<EmployeeData key={employeeData.id} employeeData={employeeData} orgAvgScore={this.props.orgAvgScore} orgStDev={this.props.orgStDev}></EmployeeData>)
+            })}
+            </tbody>
+          </Table>
+        }
       </Wrapper>
     );
   }

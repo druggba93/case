@@ -3,7 +3,15 @@ export function calcAvgScore(array) {
 };
 
 export function calcStDev(array) {
-    const mean = calcAvgScore(array);
-    const squareDiffs = array.map(x => (x - mean)**2);
+    const avg = calcAvgScore(array);
+    const squareDiffs = array.map(x => (x - avg) ** 2);
     return Math.sqrt(calcAvgScore(squareDiffs));
 };
+
+export function calcStenScore(testScore, avg, stDev) {
+    if (!testScore) return null;
+    const stenScore = ((testScore - avg) / stDev) * 2 + 5.5;
+    if (stenScore < 1) return 1;
+    if (stenScore > 10) return 10;
+    return stenScore;
+}
